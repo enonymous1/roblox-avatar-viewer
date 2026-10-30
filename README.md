@@ -32,6 +32,9 @@ with a background color picker and a capture/share action.
 - AGP 8.13.0, Gradle 8.14.3, Java 17, compile + target SDK 36, minSdk 24
 - Version catalog (`gradle/libs.versions.toml`), R8 + resource shrinking
   on release, GitHub Actions CI
+- `com.google.android.material` 1.11.0 for the window theme only
+  (`Theme.Material3.DayNight.NoActionBar` in `themes.xml`); all UI is
+  Compose, see CHANGELOG 2.0.1
 
 ## Build
 

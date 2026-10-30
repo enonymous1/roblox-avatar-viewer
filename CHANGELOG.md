@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented here.
 
+## 2.0.1 — 2026-10-30 (unreleased to CI: fix not yet run)
+
+### Fixed
+
+- Restored `com.google.android.material:material:1.11.0` (the version the
+  original project used). The v2.0.0 modernization dropped that library
+  but kept its `Theme.Material3.DayNight.NoActionBar` window-theme
+  parent in `themes.xml`, and Compose's Material 3 library does not
+  provide XML themes, so AAPT failed at `:app:processDebugResources`
+  with "style/Theme.Material3.DayNight.NoActionBar not found". The
+  library is only there for the window theme; all UI is still Compose.
+  This fix is unrun until CI passes on the first run after push.
+
 ## 2.0.0 — 2026-10-30
 
 Modernized standalone export of the 2023–2024 `justin-lyons-2312` project
