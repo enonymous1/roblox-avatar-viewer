@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Compose renders its own theme; this only sets the window chrome
+         for the single activity. Colors live in ui/theme/Theme.kt. -->
+    <style name="Theme.RobloxAvatar" parent="Theme.Material3.DayNight.NoActionBar" />
+</resources>
