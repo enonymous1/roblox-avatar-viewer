@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented here.
 
+## 2.0.2 — 2026-10-30 (unreleased to CI: fix not yet run)
+
+### Fixed
+
+- Two script errors of mine in `app/build.gradle.kts` from the 2.0.1
+  fix: the explanatory comment used `#`, which is TOML syntax, not a
+  Kotlin DSL comment (`//` is), so the script failed to compile; and
+  the deprecated `kotlinOptions.jvmTarget = "17"` form is rejected, so
+  it is now the `kotlin.compilerOptions.jvmTarget` DSL. Scanned all
+  other `.kts` files: no other `#` comments and no other
+  `kotlinOptions` blocks. This fix is unrun until CI passes on the
+  first run after push.
+
 ## 2.0.1 — 2026-10-30 (unreleased to CI: fix not yet run)
 
 ### Fixed

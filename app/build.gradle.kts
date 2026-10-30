@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -13,8 +15,8 @@ android {
         applicationId = "com.enonymous1.robloxavatar"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2
-        versionName = "2.0.1"
+        versionCode = 3
+        versionName = "2.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,9 +35,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     buildFeatures {
         compose = true
     }
@@ -43,6 +42,14 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+}
+
+// Project-level Kotlin compiler options (not inside the android block:
+// the compilerOptions DSL lives on the Kotlin project extension).
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -57,8 +64,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.webkit)
-    # Provides the Theme.Material3.DayNight.NoActionBar window theme; see
-    # the note on material-views in gradle/libs.versions.toml.
+    // Provides the Theme.Material3.DayNight.NoActionBar window theme; see
+    // the note on material-views in gradle/libs.versions.toml.
     implementation(libs.material.views)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
