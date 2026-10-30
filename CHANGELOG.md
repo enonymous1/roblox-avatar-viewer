@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented here.
 
+## 2.0.3 — 2026-10-30 (unreleased to CI: fix not yet run)
+
+### Fixed
+
+- `compileDebugKotlin` failures, two separate causes:
+  - `Unresolved reference: icons` / `Icons`: the screen uses the
+    Close, Info, and Share icons, but the `material-icons-core`
+    dependency was never added (the other modernized Compose exports
+    both carry it). Added `androidx.compose.material:material-icons-core`
+    (BOM-managed, core set only — all three icons are in it).
+  - `Typography`'s constructor is internal in the Material 3 version
+    from the Compose BOM, so `Typography(defaultFontFamily = Marhey)`
+    cannot compile. Removed the custom typography; the app uses
+    MaterialTheme's default typography, and the Marhey font file was
+    dropped rather than shipped unused. This fix is unrun until CI
+    passes on the first run after push.
+
 ## 2.0.2 — 2026-10-30 (unreleased to CI: fix not yet run)
 
 ### Fixed

@@ -10,9 +10,11 @@ components are included under their own licenses:
   (r182), taken from the three npm package and vendored so the scene
   works offline in the WebView.
 
-- **Marhey font** (`app/src/main/res/font/marhey_regular.ttf`): SIL Open
-  Font License 1.1, retained byte-identical from the original project.
-  It may be bundled in the app but may not be sold on its own.
-
 Everything else in this repository (Kotlin code, the WebView scene script,
 and documentation) is covered by this project's MIT license.
+
+Note: the original app's Marhey font (SIL Open Font License 1.1) was
+carried in v2.0.0–v2.0.2 and dropped in v2.0.3, because the Material 3
+version in the Compose BOM made `Typography`'s constructor internal and
+a global default font could no longer be wired in. No Marhey files
+remain in this repository.

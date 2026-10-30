@@ -3,7 +3,6 @@ package com.enonymous1.robloxavatar.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -11,10 +10,6 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import com.enonymous1.robloxavatar.R
 
 // Palette carried over from the original app's Material 3 color resources
 // (seed #247BA0), so the modernized app keeps the original look.
@@ -82,13 +77,12 @@ private val DarkColors = darkColorScheme(
     scrim = Color(0xFF000000),
 )
 
-// Marhey, retained byte-identical from the original app. It is released
-// under the SIL Open Font License 1.1; see THIRD_PARTY_NOTICES.md.
-private val Marhey = FontFamily(
-    Font(R.font.marhey_regular, FontWeight.Normal),
-)
-
-private val AppTypography = Typography(defaultFontFamily = Marhey)
+// No custom Typography here on purpose: with the Compose BOM in use
+// (Material 3 1.4), Typography's constructor is internal, so a custom
+// default font family can no longer be constructed. The app uses
+// MaterialTheme's default typography instead. That is also why the
+// original Marhey font file was dropped in 2.0.3 rather than shipped
+// unused.
 
 @Composable
 fun RobloxAvatarTheme(
@@ -106,7 +100,6 @@ fun RobloxAvatarTheme(
     }
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = AppTypography,
         content = content,
     )
 }

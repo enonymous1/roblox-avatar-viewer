@@ -15,8 +15,8 @@ android {
         applicationId = "com.enonymous1.robloxavatar"
         minSdk = 24
         targetSdk = 36
-        versionCode = 3
-        versionName = "2.0.2"
+        versionCode = 4
+        versionName = "2.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.core)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.webkit)
     // Provides the Theme.Material3.DayNight.NoActionBar window theme; see

@@ -105,5 +105,7 @@ carried a student email address, so the public copy is a single
 squashed commit under `enonymous1`. The original zip is otherwise
 untouched. Behavior kept from v1: the username → avatar → orbit →
 background color → capture/share flow, the original Material 3 palette
-(seed `#247BA0`), the Marhey font, and the launcher icons. Behavior
-fixed or dropped is listed in the [Changelog](CHANGELOG.md).
+(seed `#247BA0`) and the launcher icons. The original Marhey font was
+dropped in 2.0.3 (Material 3 1.4 made `Typography`'s constructor
+internal, so a global default font can no longer be constructed).
+Behavior fixed or dropped is listed in the [Changelog](CHANGELOG.md).
