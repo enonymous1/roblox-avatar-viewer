@@ -11,7 +11,7 @@ import com.enonymous1.robloxavatar.ui.RobloxAvatarViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -60,11 +60,13 @@ class RobloxAvatarViewModelTest {
         }
     }
 
-    private val dispatcher = StandardTestDispatcher()
-
+    // Unconfined, not a StandardTestDispatcher: the ViewModel runs on
+    // Dispatchers.Main, and a StandardTestDispatcher here would have its
+    // own scheduler that runTest's advanceUntilIdle() does not advance,
+    // so async assertions could run before the ViewModel's coroutines.
     @Before
     fun setUp() {
-        Dispatchers.setMain(dispatcher)
+        Dispatchers.setMain(UnconfinedTestDispatcher())
     }
 
     @After

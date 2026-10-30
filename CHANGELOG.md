@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented here.
 
+## 2.0.4 — 2026-10-30 (unreleased to CI: fix not yet run)
+
+### Fixed
+
+- `testDebugUnitTest` failures, two test bugs (not app bugs):
+  - The Base64 decoder accepted lengths that were not a multiple of 4,
+    so `decodeBase64("abc")` returned bytes instead of null, which the
+    test (correctly) expected to be rejected. The decoder is now
+    strict about the multiple-of-4 rule.
+  - The ViewModel tests set Main to a `StandardTestDispatcher` with its
+    own scheduler, while `runTest`'s `advanceUntilIdle()` advances a
+    different one, so async assertions could run before the ViewModel's
+    coroutines. The tests now use `UnconfinedTestDispatcher` for Main.
+  This fix is unrun until CI passes on the first run after push.
+
 ## 2.0.3 — 2026-10-30 (unreleased to CI: fix not yet run)
 
 ### Fixed

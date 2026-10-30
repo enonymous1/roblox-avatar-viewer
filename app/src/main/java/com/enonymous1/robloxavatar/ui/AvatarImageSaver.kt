@@ -43,7 +43,9 @@ object AvatarImageSaver {
      * Returns null for invalid input instead of throwing. */
     fun decodeBase64(input: String): ByteArray? {
         val clean = input.filterNot { it.isWhitespace() }
-        if (clean.isEmpty() || clean.length % 4 == 1) return null
+        // Base64 output is always a multiple of 4 characters; anything
+        // else is malformed, even if its trailing bits happen to be zero.
+        if (clean.isEmpty() || clean.length % 4 != 0) return null
         val padding = clean.takeLastWhile { it == '=' }.length
         if (padding > 2) return null
         val body = clean.dropLast(padding)
